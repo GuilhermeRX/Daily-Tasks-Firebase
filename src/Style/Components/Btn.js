@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../global';
 
 export const Btn = styled.button`
-  padding: 4px 16px;
+  padding: 6px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@ export const Btn = styled.button`
   outline: none;
   align-self: center;
   :active {
-    padding: 2px 14px;
+    padding: 4px 14px;
   }
 
   svg {
