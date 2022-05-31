@@ -1,5 +1,5 @@
-import { addDoc, collection } from "firebase/firestore";
-import React, { useContext, useState } from 'react';
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from 'react';
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import AppContext from '../context/AppContext';
 import { db } from '../service/firebase';
@@ -8,29 +8,53 @@ import { Forms } from '../Style/Components/Forms';
 import { Input } from '../Style/Components/Input';
 
 export default function Form() {
-  const {user: {uid}} = useContext(AppContext);
+  const {user: {uid}, taskInfo, setTaskInfo} = useContext(AppContext);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState(0);
+  const [priority, setPriority] = useState('');
   
   const handleSave = async () => {
     const newTask = {
       uid,
       name,
       description,
-      priority,
+      priority: Number(priority),
     }
-  
-    try {
-      const docRef = await addDoc(collection(db, "tasks"), newTask)
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
+    if (!taskInfo){
+      try {
+        const docRef = await addDoc(collection(db, "tasks"), newTask)
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+      setName('')
+      setDescription('')
+      setPriority('')
+    } else {
+      
+      const docRef = doc(db, 'tasks', taskInfo.doc)
+      await updateDoc(docRef, {
+        uid,
+        name,
+        description,
+        priority: Number(priority),
+      })
+      setName('')
+      setDescription('')
+      setPriority('')
+      setTaskInfo()
     }
-    setName('')
-    setDescription('')
-    setPriority('')
   }
+
+  useEffect(() => {
+    if(taskInfo) {
+      const {name, description, priority} = taskInfo
+      setName(name)
+      setDescription(description)
+      setPriority(priority)
+    }
+  }, [taskInfo])
+
   return (
     <Forms>
       <label htmlFor="name"> Name

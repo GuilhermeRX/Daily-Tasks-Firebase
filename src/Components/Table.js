@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
 import AppContext from "../context/AppContext";
 import { db } from '../service/firebase';
@@ -6,11 +6,15 @@ import { MyTable, TableBody, TableHead } from '../Style/Components/Table';
 
 export default function Table() {
   const [tasks, setTasks] = useState([])
-  const {user} = useContext(AppContext)
+  const {user, setTaskInfo} = useContext(AppContext)
 
   useEffect(() => {
     const collectionRef = collection(db, 'tasks');
-    const searchQuery =  query(collectionRef, where('uid', '==', user.uid));
+    const searchQuery =  query(
+      collectionRef,
+      where('uid', '==', user.uid),
+      orderBy('priority', 'asc'),
+      orderBy('name', 'asc'));
     
     onSnapshot(searchQuery, (querySnapshot) => {
       const array = []
@@ -37,6 +41,11 @@ export default function Table() {
    await deleteDoc(doc(db, 'tasks', id)).then(() => console.log('Task Removed'))
   }
 
+  const handleEdit = async (id) => {
+    const docRef = doc(db, 'tasks', id)
+    const docSnap = await getDoc(docRef)
+    setTaskInfo({...docSnap.data(), doc: id})
+  }
   return (
     <MyTable>
         <TableHead>
@@ -55,7 +64,11 @@ export default function Table() {
 
         <TableBody>
           {tasks.map((doc, index) => (
-            <tr key={index} id={doc.id} onClick={() => handleDel(doc.id)}>
+            <tr 
+            key={index}  
+            onClick={() => handleEdit(doc.id)}
+            onDoubleClick={() => handleDel(doc.id)}
+            >
               <td>
                 {doc.name}
               </td>
