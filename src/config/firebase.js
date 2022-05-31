@@ -1,10 +1,10 @@
 const config = {
-  apiKey: "AIzaSyBTyr1sjfm00qSt2Lo9qxFCKYSIiR-9F5o",
-  authDomain: "fir-auth-98114.firebaseapp.com",
-  projectId: "fir-auth-98114",
-  storageBucket: "fir-auth-98114.appspot.com",
-  messagingSenderId: "318601051415",
-  appId: "1:318601051415:web:240f5d095bec22b685cb52"
+  apiKey: "AIzaSyB-TtSf8BbJdVaeZoAWEeEbZsZjsJQ9-jI",
+  authDomain: "daily-tasks-f8e04.firebaseapp.com",
+  projectId: "daily-tasks-f8e04",
+  storageBucket: "daily-tasks-f8e04.appspot.com",
+  messagingSenderId: "646392771067",
+  appId: "1:646392771067:web:a29e11cf40bc3ae9019b5e"
 };
 
 export default config;

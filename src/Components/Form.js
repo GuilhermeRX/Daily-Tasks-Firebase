@@ -8,7 +8,7 @@ import { Forms } from '../Style/Components/Forms';
 import { Input } from '../Style/Components/Input';
 
 export default function Form() {
-  const {handleTask, user: {uid}} = useContext(AppContext);
+  const {user: {uid}} = useContext(AppContext);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState(0);
@@ -27,6 +27,9 @@ export default function Form() {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+    setName('')
+    setDescription('')
+    setPriority('')
   }
   return (
     <Forms>

@@ -1,4 +1,4 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
 import AppContext from "../context/AppContext";
 import { db } from '../service/firebase';
@@ -14,13 +14,28 @@ export default function Table() {
     
     onSnapshot(searchQuery, (querySnapshot) => {
       const array = []
+  
+      if(querySnapshot.docs.length === 0) {
+        return setTasks([])
+      }
+      
       querySnapshot.forEach((doc) => {
-        array.push(doc.data())
-      setTasks(array);
+        const addDocId = {
+          ...doc.data(),
+          id: doc.id,
+        }
+        array.push(addDocId)
+        setTasks(array);
       });
-
+      
     })
-  }, [user.uid])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  const handleDel = async (id) => {
+   await deleteDoc(doc(db, 'tasks', id)).then(() => console.log('Task Removed'))
+  }
 
   return (
     <MyTable>
@@ -40,7 +55,7 @@ export default function Table() {
 
         <TableBody>
           {tasks.map((doc, index) => (
-            <tr key={index}>
+            <tr key={index} id={doc.id} onClick={() => handleDel(doc.id)}>
               <td>
                 {doc.name}
               </td>
