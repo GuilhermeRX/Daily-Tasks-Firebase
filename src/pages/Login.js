@@ -30,9 +30,9 @@ export default function Login() {
       <img src={todolist} alt='todolist'/>
       <div>
         <span>Daily Tasks <GiNotebook /></span>
-        <h1>Seja Bem vindo!</h1>
+        <h1>Welcome!</h1>
         <LoginBtn onClick={handleGoogleLoginClick}>
-          <FcGoogle />Entrar com Google
+          <FcGoogle />Login with Google
         </LoginBtn>
       </div>
     </Container>

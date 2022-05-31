@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../../global';
 
 export const Container = styled.div`
-  background-color: ${colors.background};
+  background-color: ${colors.main};
   width: 100%;
   height: 100vh;
   display: flex;
@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   img {
-    width: 280px;
+    width: 180px;
     margin-bottom: 36px;
   }
 
