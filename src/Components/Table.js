@@ -1,9 +1,27 @@
-import React, { useContext } from 'react'
-import AppContext from '../context/AppContext'
-import { MyTable, TableBody, TableHead } from '../Style/Components/Table'
+import { collection, onSnapshot, query, where } from "firebase/firestore";
+import React, { useContext, useEffect, useState } from 'react';
+import AppContext from "../context/AppContext";
+import { db } from '../service/firebase';
+import { MyTable, TableBody, TableHead } from '../Style/Components/Table';
 
 export default function Table() {
-  const {task} = useContext(AppContext)
+  const [tasks, setTasks] = useState([])
+  const {user} = useContext(AppContext)
+
+  useEffect(() => {
+    const collectionRef = collection(db, 'tasks');
+    const searchQuery =  query(collectionRef, where('uid', '==', user.uid));
+    
+    onSnapshot(searchQuery, (querySnapshot) => {
+      const array = []
+      querySnapshot.forEach((doc) => {
+        array.push(doc.data())
+      setTasks(array);
+      });
+
+    })
+  }, [user.uid])
+
   return (
     <MyTable>
         <TableHead>
@@ -21,16 +39,16 @@ export default function Table() {
         </TableHead>
 
         <TableBody>
-          {task.map((obj, index) => (
+          {tasks.map((doc, index) => (
             <tr key={index}>
               <td>
-                {obj.name}
+                {doc.name}
               </td>
               <td>
-                {obj.description}
+                {doc.description}
               </td>
               <td>
-                {obj.priority}
+                {doc.priority}
               </td>
             </tr>
           ))}

@@ -15,11 +15,12 @@ export default function Login() {
     const result = await loginWithSocialMedia('google')
   
     if(result.user) {
-      const {email, displayName, photoURL } = result.user
+      const {email, displayName, photoURL, uid } = result.user
       const userInfo = {
         firstName: displayName.split(' ')[0],
         email,
         photoURL,
+        uid,
       }
       handleUser(userInfo)
       navigate('/home')
