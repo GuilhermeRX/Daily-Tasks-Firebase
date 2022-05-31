@@ -13,7 +13,7 @@ export const Btn = styled.button`
   color: ${colors.background};
   font-size: 14px;
   font-weight: 600;
-
+  outline: none;
   :active {
     padding: 2px 14px;
   }
