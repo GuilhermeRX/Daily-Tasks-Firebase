@@ -20,7 +20,6 @@ export default function Form() {
       description,
       priority,
     }
-    handleTask(prevTask => [...prevTask, newTask ])
   
     try {
       const docRef = await addDoc(collection(db, "tasks"), newTask)

@@ -4,7 +4,6 @@ import { colors } from '../global';
 export const MyTable = styled.table`
   width: 100%;
   padding: 16px;
-  margin: auto;
 `
 
 export const TableHead = styled.thead`
