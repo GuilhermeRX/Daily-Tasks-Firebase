@@ -33,9 +33,36 @@ export default function Form() {
   }
   return (
     <Forms>
-        <Input type='text' placeholder='Name' value={name} onChange={({target}) => setName(target.value)}/>
-        <Input type='text' placeholder='Description' value={description} onChange={({target}) => setDescription(target.value)} />
-        <Input type='number' placeholder='Priority' value={priority} onChange={({target}) => setPriority(target.value)}/>
+      <label htmlFor="name"> Name
+        <Input 
+        type='text'
+        placeholder='Name' 
+        value={name}
+        id='name'
+        onChange={({target}) => setName(target.value)}
+        />
+      </label>
+
+      <label htmlFor="description"> Description
+        <Input 
+        type='text' 
+        placeholder='Description' 
+        value={description} 
+        id='description'
+        onChange={({target}) => setDescription(target.value)} 
+        />
+      </label>
+
+      <label htmlFor="priority"> Priority
+        <Input 
+        type='number'
+        placeholder='Priority' 
+        value={priority}
+        id='priority'
+        onChange={({target}) => setPriority(target.value)}
+        />
+      </label>
+  
         <Btn type='button' onClick={handleSave}>Save Task <BsFillPatchCheckFill /></Btn>
     </Forms>
   )

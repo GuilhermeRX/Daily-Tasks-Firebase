@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../global';
 
 export const Input = styled.input`
-  margin: 4px;
+  margin: 4px 0px;
   padding: 8px 8px;
   font-size: 14px;
   font-weight: 100;
