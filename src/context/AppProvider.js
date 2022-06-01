@@ -6,6 +6,7 @@ export default function AppProvider({children}) {
   const [taskInfo, setTaskInfo] = useState();
 
   const handleUser = (info) => setUser(info);
+
   const contextValue = {
     user,
     handleUser,

@@ -9,6 +9,8 @@ export default function Table() {
   const {user, setTaskInfo} = useContext(AppContext)
 
   useEffect(() => {
+    if (user.uid) {
+      console.log('USER AUTH - TABLE REQUISITIONS OK !')
     const collectionRef = collection(db, 'tasks');
     const searchQuery =  query(
       collectionRef,
@@ -33,8 +35,9 @@ export default function Table() {
       });
       
     })
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [user])
 
   const handleEdit = async (id) => {
     const docRef = doc(db, 'tasks', id)
