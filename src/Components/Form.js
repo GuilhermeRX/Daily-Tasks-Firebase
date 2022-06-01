@@ -15,13 +15,15 @@ export default function Form() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
-  
+  const [done, setDone] = useState(false);
+
   const handleSave = async () => {
     const newTask = {
       uid,
       name,
       description,
       priority: Number(priority),
+      done,
     }
     if (!taskInfo){
       try {
@@ -41,6 +43,7 @@ export default function Form() {
         name,
         description,
         priority: Number(priority),
+        done,
       })
       setName('')
       setDescription('')
@@ -66,12 +69,28 @@ export default function Form() {
     setTaskInfo()
    }
 
+  const handleDone = async () => {
+    setDone(!done)
+    const docRef = doc(db, 'tasks', taskInfo.doc)
+    await updateDoc(docRef, {
+      uid,
+      name,
+      description,
+      priority: Number(priority),
+      done,
+    })
+    setName('')
+    setDescription('')
+    setPriority('')
+    setTaskInfo()
+  }
+
   const optionsEdit = (
     <div style={{display:'flex'}}>
       <Btn type='button' onClick={handleDel}>
         Trash <FaTrash />
       </Btn>
-      <Btn type='button'>
+      <Btn type='button' onClick={handleDone}>
         Done <AiOutlineFileDone />
       </Btn>
     </div>
