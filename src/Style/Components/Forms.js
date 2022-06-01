@@ -9,7 +9,7 @@ export const Forms = styled.form`
   width: max-content;
 
   label {
-    margin: 4px 0;
+    margin: 4px auto;
     display: flex;
     justify-content: center;
     align-items: flex-start;

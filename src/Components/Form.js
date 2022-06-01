@@ -1,9 +1,12 @@
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
+import { AiOutlineFileDone } from "react-icons/ai";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { FaTrash } from 'react-icons/fa';
 import AppContext from '../context/AppContext';
 import { db } from '../service/firebase';
 import { Btn } from '../Style/Components/Btn';
+import { ContainerBtns } from "../Style/Components/EditBtns";
 import { Forms } from '../Style/Components/Forms';
 import { Input } from '../Style/Components/Input';
 
@@ -55,6 +58,17 @@ export default function Form() {
     }
   }, [taskInfo])
 
+  const optionsEdit = (
+    <div style={{display:'flex'}}>
+      <Btn type='button'>
+        Trash <FaTrash />
+      </Btn>
+      <Btn type='button'>
+        Done <AiOutlineFileDone />
+      </Btn>
+    </div>
+  )
+
   return (
     <Forms>
       <label htmlFor="name"> Name
@@ -86,10 +100,12 @@ export default function Form() {
         onChange={({target}) => setPriority(target.value)}
         />
       </label>
-  
+        <ContainerBtns>
         <Btn type='button' onClick={handleSave}>
           Save {taskInfo ? 'Edit' : 'Task'} <BsFillPatchCheckFill />
         </Btn>
+        {taskInfo && optionsEdit}
+        </ContainerBtns>
     </Forms>
   )
 }
