@@ -87,7 +87,9 @@ export default function Form() {
         />
       </label>
   
-        <Btn type='button' onClick={handleSave}>Save Task <BsFillPatchCheckFill /></Btn>
+        <Btn type='button' onClick={handleSave}>
+          Save {taskInfo ? 'Edit' : 'Task'} <BsFillPatchCheckFill />
+        </Btn>
     </Forms>
   )
 }
