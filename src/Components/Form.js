@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineFileDone } from "react-icons/ai";
 import { BsFillPatchCheckFill } from "react-icons/bs";
@@ -58,9 +58,17 @@ export default function Form() {
     }
   }, [taskInfo])
 
+  const handleDel = async () => {
+    await deleteDoc(doc(db, 'tasks', taskInfo.doc)).then(() => console.log('Task Removed'))
+    setName('')
+    setDescription('')
+    setPriority('')
+    setTaskInfo()
+   }
+
   const optionsEdit = (
     <div style={{display:'flex'}}>
-      <Btn type='button'>
+      <Btn type='button' onClick={handleDel}>
         Trash <FaTrash />
       </Btn>
       <Btn type='button'>

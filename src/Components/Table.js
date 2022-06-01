@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
 import AppContext from "../context/AppContext";
 import { db } from '../service/firebase';
@@ -36,11 +36,6 @@ export default function Table() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
-  const handleDel = async (id) => {
-   await deleteDoc(doc(db, 'tasks', id)).then(() => console.log('Task Removed'))
-  }
-
   const handleEdit = async (id) => {
     const docRef = doc(db, 'tasks', id)
     const docSnap = await getDoc(docRef)
@@ -67,7 +62,6 @@ export default function Table() {
             <tr 
             key={index}  
             onClick={() => handleEdit(doc.id)}
-            onDoubleClick={() => handleDel(doc.id)}
             >
               <td>
                 {doc.name}
