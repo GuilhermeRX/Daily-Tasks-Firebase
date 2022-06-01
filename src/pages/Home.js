@@ -2,6 +2,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useContext, useEffect } from 'react'
 import { BsListTask } from "react-icons/bs"
 import { useNavigate } from 'react-router-dom'
+import Footer from '../Components/Footer'
 import Form from '../Components/Form'
 import Header from '../Components/Header'
 import Table from '../Components/Table'
@@ -47,6 +48,7 @@ export default function Home() {
         <span>Your Tasks <BsListTask /></span>
         <Table />
       </Main>
+      <Footer />
     </DivHome>
   )
 }
