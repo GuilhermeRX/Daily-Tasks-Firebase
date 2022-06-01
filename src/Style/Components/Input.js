@@ -8,7 +8,7 @@ export const Input = styled.input`
   font-weight: 100;
   color: ${colors.background};
   border: none;
-  border-left: 2px solid ${colors.background};
-  box-shadow: 2px 2px 4px ${colors.background};
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.32);
   outline: none;
+  border-radius: 8px;
 `;
