@@ -13,8 +13,8 @@ export default function Profile() {
       <MyProfile>
         <h1>My Profile</h1>
         <img src={photoURL} alt='UserName'/>
-        <p>Nome: {displayName}</p>
-        <p>Email: {email}</p>
+        <p>{displayName}</p>
+        <p>{email}</p>
       </MyProfile>
       <Footer />
     </MyProfContainer>

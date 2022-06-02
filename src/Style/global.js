@@ -6,11 +6,11 @@ export const fontColors = {
 export const colors = {
   background: '#121214',
   headline: '#fffffe',
-  paragraph: '#94a1b2',
+  paragraph: '#9fa5f8',
   button: '#8257e5',
   buttonText: '#fffffe',
-  secondary: '#E9ECEF',
+  secondary: '#fcfbff',
   main: '#fffffe',
-  highlight: '#8257e5',
+  highlight: '#5350d1',
   tertiary: '#2cb67d',
 }
