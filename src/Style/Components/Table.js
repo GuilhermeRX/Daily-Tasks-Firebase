@@ -10,7 +10,6 @@ export const TableHead = styled.thead`
   background-color: ${colors.highlight};
   color: ${colors.main};
   text-align: center;
-
   tr {
     height: 1.6em;
   }
