@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
 import AppContext from "../context/AppContext";
 import { db } from '../service/firebase';
-import { TaskCard, TaskContainer } from "../Style/Components/Card";
+import { InfoDiv, TaskCard, TaskContainer } from "../Style/Components/Card";
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
@@ -55,7 +55,7 @@ export default function Card() {
         console.log('Sorry, choice one priority');
     }
   }
-
+  
   return (
     <TaskContainer>
       {tasks.map((task, index) => (
@@ -65,7 +65,15 @@ export default function Card() {
         >
           <h2>{task.name}</h2>
           <p>{task.description}</p>
-          {selectPriority(task)}
+          <InfoDiv>
+            {selectPriority(task)}
+            <div>
+              <p>{new Date(task.dateStart).toLocaleDateString()}</p>
+              <p>
+                {`${new Date(task.dateStart).getHours()}:${new Date(task.dateStart).getMinutes()} `}
+              </p>
+            </div>
+          </InfoDiv>
         </TaskCard>
       ))}
     </TaskContainer>

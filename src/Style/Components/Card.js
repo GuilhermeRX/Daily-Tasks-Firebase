@@ -7,6 +7,7 @@ export const TaskContainer = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 100px;
 `;
 
 export const TaskCard = styled.div`
@@ -34,6 +35,20 @@ export const TaskCard = styled.div`
 
   svg {
     font-size: 18px;
-    margin-top: 16px;
+  }
+`;
+
+export const InfoDiv = styled.div`
+  margin-top: 16px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
 `;

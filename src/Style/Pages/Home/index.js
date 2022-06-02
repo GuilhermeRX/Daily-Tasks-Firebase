@@ -5,6 +5,7 @@ export const DivHome = styled.div`
   background: linear-gradient(170deg, rgba(255,255,255,1) 0%, rgba(220,233,246,1) 35%);
   width: 100%;
   height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

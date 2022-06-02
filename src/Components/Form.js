@@ -18,12 +18,15 @@ export default function Form() {
   const [done, setDone] = useState(false);
 
   const handleSave = async () => {
+
     const newTask = {
       uid,
       name,
       description,
       priority: Number(priority),
       done,
+      dateStart: Date.now(),
+      dateDone: null,
     }
     if (!taskInfo){
       try {
