@@ -3,11 +3,12 @@ import { colors } from '../global';
 
 export const TaskContainer = styled.div`
   width: 65%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
 `;
 
 export const TaskCard = styled.div`
