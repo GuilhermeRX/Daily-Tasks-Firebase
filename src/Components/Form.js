@@ -15,7 +15,6 @@ export default function Form() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
-  const [done, setDone] = useState(false);
 
   const handleSave = async () => {
 
@@ -24,7 +23,7 @@ export default function Form() {
       name,
       description,
       priority: Number(priority),
-      done,
+      done: false,
       dateStart: Date.now(),
       dateDone: null,
     }
@@ -46,7 +45,7 @@ export default function Form() {
         name,
         description,
         priority: Number(priority),
-        done,
+        done: false,
       })
       setName('')
       setDescription('')
@@ -73,16 +72,14 @@ export default function Form() {
    }
 
   const handleDone = async () => {
-    setDone(!done)
     const docRef = doc(db, 'tasks', taskInfo.doc)
     await updateDoc(docRef, {
       uid,
       name,
       description,
       priority: Number(priority),
-      done,
+      done: true,
     })
-    console.log('done', done)
     setName('')
     setDescription('')
     setPriority('')
