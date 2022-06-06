@@ -16,6 +16,7 @@ export default function Card() {
     const searchQuery =  query(
       collectionRef,
       where('uid', '==', user.uid),
+      where('done', '==', false),
       orderBy('priority', 'asc'),
       orderBy('name', 'asc'));
     

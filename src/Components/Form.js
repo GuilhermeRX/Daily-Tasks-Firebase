@@ -82,6 +82,7 @@ export default function Form() {
       priority: Number(priority),
       done,
     })
+    console.log('done', done)
     setName('')
     setDescription('')
     setPriority('')
