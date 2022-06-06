@@ -5,13 +5,27 @@ export default function Review() {
   return (
     <ReviewContainer>
       <GridOne>
-        <div>Done</div>
-        <div>In Progress</div>
+        <div>
+          <h1>22</h1>
+          <p>Done</p>
+        </div>
+        
+        <div>
+          <h1>8</h1>
+          <p>In Progress</p>
+        </div>
       </GridOne>
 
       <GridTwo>
-        <div>Ongoing</div>
-        <div>Waiting for Review</div>
+      <div>
+          <h1>4</h1>
+          <p>Ongoing</p>
+        </div>
+        
+        <div>
+          <h1>3</h1>
+          <p>Waiting for Review</p>
+        </div>
       </GridTwo>
     </ReviewContainer>
   )
