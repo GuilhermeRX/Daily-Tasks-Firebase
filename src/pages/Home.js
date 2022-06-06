@@ -2,15 +2,13 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
-import Form from '../Components/Form'
 import Header from '../Components/Header'
 import AppContext from '../context/AppContext'
 import { app } from '../service/firebase'
-import { Main } from '../Style/Components/Main'
 import { DivHome } from '../Style/Pages/Home'
 
 export default function Home() {
-  const {taskInfo, handleUser} = useContext(AppContext);
+  const {handleUser} = useContext(AppContext);
   const navigate = useNavigate()
   
   useEffect(() => {
@@ -40,10 +38,6 @@ export default function Home() {
   return (
     <DivHome>
       <Header />
-      <Main>
-        <h4>{taskInfo ? 'Edit Your Task ' : 'Add New Task'}</h4>
-        <Form />
-      </Main>
       <Footer />
     </DivHome>
   )
