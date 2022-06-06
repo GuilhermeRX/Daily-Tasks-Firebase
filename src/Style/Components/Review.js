@@ -6,15 +6,16 @@ export const ReviewContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 18px;
   height: 240px;
-  width: 80%;
+  width: 100%;
+  padding: 24px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 16px;
 `;
 
 export const GridOne = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1.2fr;
+  grid-template-rows: 2fr 1.4fr;
   grid-gap: 18px;
 
   div {
@@ -43,7 +44,7 @@ export const GridOne = styled.div`
 export const GridTwo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.2fr 2fr;
+  grid-template-rows: 1.4fr 2fr;
   grid-gap: 18px;
   
   div {

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../global';
 
 export const DivHome = styled.div`
   background: rgb(113,98,221);
@@ -10,3 +11,10 @@ export const DivHome = styled.div`
   justify-content: flex-start;
   align-items: center;
 `
+
+export const Title = styled.h1`
+  align-self: flex-start;
+  margin-left: 24px;
+  color: ${colors.main};
+  font-size: 1.6em;
+`;

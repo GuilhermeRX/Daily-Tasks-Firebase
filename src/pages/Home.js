@@ -6,7 +6,7 @@ import Header from '../Components/Header'
 import Review from '../Components/Review'
 import AppContext from '../context/AppContext'
 import { app } from '../service/firebase'
-import { DivHome } from '../Style/Pages/Home'
+import { DivHome, Title } from '../Style/Pages/Home'
 
 export default function Home() {
   const {handleUser} = useContext(AppContext);
@@ -40,6 +40,7 @@ export default function Home() {
   return (
     <DivHome>
       <Header />
+      <Title>Monthly Review</Title>
       <Review />
       <Footer />
     </DivHome>
