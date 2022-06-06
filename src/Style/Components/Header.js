@@ -3,13 +3,26 @@ import { colors } from '../global';
 
 export const Container = styled.header`
   width: 100%;
-  background-color: ${colors.background};
-  justify-content: space-between;
+  justify-content: center;
+  padding: 24px;
   display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
+  align-items: flex-start;
+  height: 300px;
+  flex-direction: column;
+  overflow: hidden;
+
+  h1 {
+    font-size: 2.2em;
+    color: ${colors.main};
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    font-size: 14px;
+    color: ${colors.paragraph};
+    letter-spacing: 0.5px;
+  }
+
   span {
     margin: 8px 16px;
     display: flex;
@@ -26,3 +39,12 @@ export const Container = styled.header`
     color: ${colors.headline}
   }
 `
+
+export const DivSvg = styled.div`
+  position: fixed;
+  right: -26px;
+  top: 30px;
+  img {
+    width: 200px;
+  }
+`;

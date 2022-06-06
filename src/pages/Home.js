@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
 import Header from '../Components/Header'
+import Review from '../Components/Review'
 import AppContext from '../context/AppContext'
 import { app } from '../service/firebase'
 import { DivHome } from '../Style/Pages/Home'
@@ -13,6 +14,7 @@ export default function Home() {
   
   useEffect(() => {
     const auth = getAuth(app)
+    
     const getUser = async () => {
 
     onAuthStateChanged(auth, (userAuth) => {
@@ -38,6 +40,7 @@ export default function Home() {
   return (
     <DivHome>
       <Header />
+      <Review />
       <Footer />
     </DivHome>
   )

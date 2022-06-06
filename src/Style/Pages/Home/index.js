@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { colors } from '../../global';
 
 export const DivHome = styled.div`
-  background-color: ${colors.highlight};
+  background: rgb(113,98,221);
+  background: linear-gradient(150deg, rgba(113,98,221,1) 2%, rgba(68,49,174,1) 35%);
   width: 100%;
   min-height: 100vh;
   display: flex;
