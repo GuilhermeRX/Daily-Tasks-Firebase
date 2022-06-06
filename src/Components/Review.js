@@ -1,7 +1,5 @@
-import { collection, onSnapshot, query, where } from 'firebase/firestore';
-import React, { useContext, useState } from 'react';
-import AppContext from '../context/AppContext';
-import { db } from '../service/firebase';
+import React, { useEffect, useState } from 'react';
+import useDone from '../hooks/useDone';
 import { GridOne, GridTwo, ReviewContainer } from '../Style/Components/Review';
 
 export default function Review() {
@@ -11,29 +9,11 @@ export default function Review() {
   const [onGoing, setOnGoing] = useState(0);
   const [waitReview, setWaitReview] = useState(0);
 
-  const {user} = useContext(AppContext)
-  
+ const docLength = useDone()
 
-  if (user.uid) {
-    const collectionRef = collection(db, 'tasks');
-
-    const searchQuery =  query(
-      collectionRef,
-      where('uid', '==', user.uid),
-      where('done', '==', true),
-    );
-  
-    onSnapshot(searchQuery, (querySnapshot) => {
-      const docs = [];
-      if(querySnapshot.docs.length === 0) {
-        return setDone(0)
-      }
-      querySnapshot.forEach((doc) => {
-        docs.push(doc.data())
-      })
-      setDone(docs.length)
-    })
-  }
+ useEffect(() => {
+   setDone(docLength)
+ }, [docLength])
    
   return (
     <ReviewContainer>
