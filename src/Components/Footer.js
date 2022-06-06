@@ -1,7 +1,7 @@
 import { getAuth, signOut } from "firebase/auth";
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
-import { IoHome, IoStatsChart } from 'react-icons/io5';
+import { IoDocumentText, IoHome } from 'react-icons/io5';
 import { MdLogout } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 import { DivFooter } from '../Style/Components/Footer';
@@ -44,7 +44,7 @@ export default function Footer() {
         isActive ? activeStyle : noActiveStyle
       }
       >
-        <IoStatsChart />
+        <IoDocumentText />
       </NavLink>
 
       <NavLink 
