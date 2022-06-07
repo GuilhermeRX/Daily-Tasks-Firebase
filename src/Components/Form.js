@@ -20,10 +20,9 @@ export default function Form() {
       name,
       description,
       priority: Number(priority),
-      done: false,
       dateStart: Date.now(),
       dateDone: null,
-      inProgress: false,
+      status: 'ongoing',
     }
     if (!taskInfo){
       try {
@@ -35,15 +34,14 @@ export default function Form() {
       setName('')
       setDescription('')
       setPriority('')
+
     } else {
-      
       const docRef = doc(db, 'tasks', taskInfo.doc)
       await updateDoc(docRef, {
         uid,
         name,
         description,
         priority: Number(priority),
-        done: false,
       })
       setName('')
       setDescription('')
@@ -60,7 +58,6 @@ export default function Form() {
       setPriority(priority)
     }
   }, [taskInfo])
-
 
   return (
     <Forms>

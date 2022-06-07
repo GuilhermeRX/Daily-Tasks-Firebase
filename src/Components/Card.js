@@ -1,11 +1,12 @@
 import { collection, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
-import { AiFillCheckCircle, AiFillCloseCircle, AiFillPlayCircle } from "react-icons/ai";
+import { AiFillCheckCircle, AiFillCloseCircle, AiFillPlayCircle, AiOutlineFileSearch } from "react-icons/ai";
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
 import { MdEditNote } from 'react-icons/md';
 import AppContext from "../context/AppContext";
 import DoneTask from "../service/DoneTask";
 import { db } from '../service/firebase';
+import ReviewTask from "../service/ReviewTask";
 import { PlayTask } from "../service/StartTask";
 import TaskTrash from "../service/TaskTrash";
 import { InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Components/Card";
@@ -14,7 +15,6 @@ export default function Card() {
   const [tasks, setTasks] = useState([])
   const {user, setTaskInfo} = useContext(AppContext)
 
-  
   useEffect(() => {
     if (user.uid) {
       console.log('USER AUTH - TABLE REQUISITIONS OK !')
@@ -22,7 +22,6 @@ export default function Card() {
     const searchQuery =  query(
       collectionRef,
       where('uid', '==', user.uid),
-      where('done', '==', false),
       orderBy('priority', 'asc'),
       orderBy('name', 'asc'));
     
@@ -62,6 +61,18 @@ export default function Card() {
         console.log('Sorry, choice one priority');
     }
   }
+
+  const renderCardStatusIcon = (task) => {
+    switch (task.status) {
+      case 'ongoing': 
+      return <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>;
+      case 'in progress': 
+      return <AiOutlineFileSearch onClick={() => ReviewTask(task.id)}/>;
+      case 'review':
+      return <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>;
+      default: console.log('Retorno não esperado:', task.status);
+    }
+  }
   
   return (
     <TaskContainer>
@@ -81,13 +92,9 @@ export default function Card() {
               </p>
             </div>
           <StartTask >
-            {task.inProgress 
-            ? <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>
-            : <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>
-            }
+            {renderCardStatusIcon(task)}
             <AiFillCloseCircle onClick={() => TaskTrash(task.id)}/>
             <MdEditNote onClick={() => handleEdit(task.id)}/>
-            
           </StartTask>
           </InfoDiv>
         </TaskCard>

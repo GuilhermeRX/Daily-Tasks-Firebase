@@ -14,7 +14,7 @@ export default function useDone() {
     const searchQuery =  query(
       collectionRef,
       where('uid', '==', user.uid),
-      where('done', '==', true),
+      where('status', '==', 'done'),
     );
   
     onSnapshot(searchQuery, (querySnapshot) => {

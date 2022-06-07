@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import useDone from '../hooks/useDone';
 import useInProgress from '../hooks/useInProgress';
+import useOnGoing from '../hooks/useOnGoing';
+import useReview from '../hooks/useReview';
 import { GridOne, GridTwo, ReviewContainer } from '../Style/Components/Review';
 
 export default function Review() {
@@ -8,14 +10,20 @@ export default function Review() {
   const [done, setDone] = useState(0);
   const [inProgress, setInProgress] = useState(0);
   const [onGoing, setOnGoing] = useState(0);
-  const [waitReview, setWaitReview] = useState(0);
+  const [review, setReview] = useState(0);
 
  const docLength = useDone();
  const docInProgress = useInProgress();
+ const docOnGoing = useOnGoing();
+ const docReview = useReview();
+ 
  useEffect(() => {
-   setDone(docLength)
+   setOnGoing(docOnGoing)
    setInProgress(docInProgress)
- }, [docLength, docInProgress])
+   setDone(docLength)
+   console.log(docReview)
+   setReview(docReview)
+ }, [docLength, docInProgress, docOnGoing, docReview])
    
   return (
     <ReviewContainer>
@@ -38,7 +46,7 @@ export default function Review() {
         </div>
         
         <div>
-          <h1>{waitReview}</h1>
+          <h1>{review}</h1>
           <p>Waiting for Review</p>
         </div>
       </GridTwo>

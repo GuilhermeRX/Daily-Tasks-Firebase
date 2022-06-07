@@ -1,10 +1,11 @@
 import { doc, updateDoc } from "firebase/firestore"
 import { db } from "./firebase"
 
-export async function PlayTask(id) {
+const ReviewTask = async (id) => {
   const docRef = doc(db, 'tasks', id)
   await updateDoc(docRef, {
-    status: 'in progress',
+    status: 'review',
   })
-  console.log('Task in Progress')
 }
+
+export default ReviewTask;

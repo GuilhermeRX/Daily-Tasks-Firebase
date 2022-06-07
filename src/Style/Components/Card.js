@@ -63,7 +63,7 @@ export const StartTask = styled.span`
   justify-content: center;
   svg {
     font-size: 22px;
-    color: ${colors.paragraph};
+    color: ${colors.main};
     margin: 2px;
   }
 `;
