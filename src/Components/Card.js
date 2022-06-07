@@ -9,7 +9,7 @@ import { db } from '../service/firebase';
 import ReviewTask from "../service/ReviewTask";
 import { PlayTask } from "../service/StartTask";
 import TaskTrash from "../service/TaskTrash";
-import { InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Components/Card";
+import { Done, InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Components/Card";
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
@@ -65,13 +65,23 @@ export default function Card() {
   const renderCardStatusIcon = (task) => {
     switch (task.status) {
       case 'ongoing': 
-      return <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>;
+        return <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>;
       case 'in progress': 
-      return <AiOutlineFileSearch onClick={() => ReviewTask(task.id)}/>;
+        return <AiOutlineFileSearch onClick={() => ReviewTask(task.id)}/>;
       case 'review':
-      return <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>;
-      default: console.log('Retorno não esperado:', task.status);
+        return <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>;
+      default: return null;
     }
+  }
+
+  const doneTime = (task) => {
+    console.log(task.duration)
+    const render = (
+      <Done>
+        <p>{`Done in: ${task.duration}`}</p>
+      </Done>
+    )
+    return render
   }
   
   return (
@@ -86,16 +96,20 @@ export default function Card() {
           <InfoDiv>
             {selectPriority(task)}
             <div>
-              <p>{new Date(task.dateStart).toLocaleDateString()}</p>
-              <p>
-                {`${new Date(task.dateStart).getHours()}:${new Date(task.dateStart).getMinutes()} `}
-              </p>
+              <span>
+                <p>{new Date(task.dateStart).toLocaleDateString()}</p>
+                <p>
+                  {`${new Date(task.dateStart).getHours()}:${new Date(task.dateStart).getMinutes()} `}
+                </p>
+              </span>
+              {task.duration !== null && doneTime(task)}
             </div>
           <StartTask >
             {renderCardStatusIcon(task)}
             <AiFillCloseCircle onClick={() => TaskTrash(task.id)}/>
             <MdEditNote onClick={() => handleEdit(task.id)}/>
           </StartTask>
+
           </InfoDiv>
         </TaskCard>
       ))}

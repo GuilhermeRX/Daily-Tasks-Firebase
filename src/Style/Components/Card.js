@@ -40,14 +40,19 @@ export const TaskCard = styled.div`
 `;
 
 export const InfoDiv = styled.div`
-  margin-top: 16px;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
-
+  margin-top: 16px;
   div {
     width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  span {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -66,4 +71,16 @@ export const StartTask = styled.span`
     color: ${colors.main};
     margin: 2px;
   }
+`;
+
+export const Done = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+  font-size: 12px;
+  color: ${colors.paragraph};
+  letter-spacing: 0.5px;
+  }
+  
 `;

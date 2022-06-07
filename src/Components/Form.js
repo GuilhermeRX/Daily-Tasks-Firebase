@@ -21,7 +21,7 @@ export default function Form() {
       description,
       priority: Number(priority),
       dateStart: Date.now(),
-      dateDone: null,
+      duration: null,
       status: 'ongoing',
     }
     if (!taskInfo){
