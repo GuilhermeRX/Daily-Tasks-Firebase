@@ -53,3 +53,17 @@ export const InfoDiv = styled.div`
     justify-content: space-around;
   }
 `;
+
+export const StartTask = styled.span`
+  position: absolute;
+  right: 20%;
+  margin-top: -108px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    font-size: 22px;
+    color: ${colors.paragraph};
+    margin: 2px;
+  }
+`;

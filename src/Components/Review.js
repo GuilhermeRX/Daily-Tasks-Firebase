@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useDone from '../hooks/useDone';
+import useInProgress from '../hooks/useInProgress';
 import { GridOne, GridTwo, ReviewContainer } from '../Style/Components/Review';
 
 export default function Review() {
@@ -9,11 +10,12 @@ export default function Review() {
   const [onGoing, setOnGoing] = useState(0);
   const [waitReview, setWaitReview] = useState(0);
 
- const docLength = useDone()
-
+ const docLength = useDone();
+ const docInProgress = useInProgress();
  useEffect(() => {
    setDone(docLength)
- }, [docLength])
+   setInProgress(docInProgress)
+ }, [docLength, docInProgress])
    
   return (
     <ReviewContainer>

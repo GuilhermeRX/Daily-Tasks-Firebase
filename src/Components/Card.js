@@ -1,14 +1,20 @@
 import { collection, doc, getDoc, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
+import { AiFillCheckCircle, AiFillCloseCircle, AiFillPlayCircle } from "react-icons/ai";
 import { FcHighPriority, FcLowPriority, FcMediumPriority } from 'react-icons/fc';
+import { MdEditNote } from 'react-icons/md';
 import AppContext from "../context/AppContext";
+import DoneTask from "../service/DoneTask";
 import { db } from '../service/firebase';
-import { InfoDiv, TaskCard, TaskContainer } from "../Style/Components/Card";
+import { PlayTask } from "../service/StartTask";
+import TaskTrash from "../service/TaskTrash";
+import { InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Components/Card";
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
   const {user, setTaskInfo} = useContext(AppContext)
 
+  
   useEffect(() => {
     if (user.uid) {
       console.log('USER AUTH - TABLE REQUISITIONS OK !')
@@ -62,7 +68,7 @@ export default function Card() {
       {tasks.map((task, index) => (
         <TaskCard
         key={index}
-        onClick={() => handleEdit(task.id)}
+        
         >
           <h2>{task.name}</h2>
           <p>{task.description}</p>
@@ -74,6 +80,15 @@ export default function Card() {
                 {`${new Date(task.dateStart).getHours()}:${new Date(task.dateStart).getMinutes()} `}
               </p>
             </div>
+          <StartTask >
+            {task.inProgress 
+            ? <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>
+            : <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>
+            }
+            <AiFillCloseCircle onClick={() => TaskTrash(task.id)}/>
+            <MdEditNote onClick={() => handleEdit(task.id)}/>
+            
+          </StartTask>
           </InfoDiv>
         </TaskCard>
       ))}

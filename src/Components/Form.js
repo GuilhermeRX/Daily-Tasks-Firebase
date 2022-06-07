@@ -1,8 +1,6 @@
-import { addDoc, collection, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from 'react';
-import { AiOutlineFileDone } from "react-icons/ai";
 import { BsFillPatchCheckFill } from "react-icons/bs";
-import { FaTrash } from 'react-icons/fa';
 import AppContext from '../context/AppContext';
 import { db } from '../service/firebase';
 import { Btn } from '../Style/Components/Btn';
@@ -17,7 +15,6 @@ export default function Form() {
   const [priority, setPriority] = useState('');
 
   const handleSave = async () => {
-
     const newTask = {
       uid,
       name,
@@ -26,6 +23,7 @@ export default function Form() {
       done: false,
       dateStart: Date.now(),
       dateDone: null,
+      inProgress: false,
     }
     if (!taskInfo){
       try {
@@ -63,39 +61,6 @@ export default function Form() {
     }
   }, [taskInfo])
 
-  const handleDel = async () => {
-    await deleteDoc(doc(db, 'tasks', taskInfo.doc)).then(() => console.log('Task Removed'))
-    setName('')
-    setDescription('')
-    setPriority('')
-    setTaskInfo()
-   }
-
-  const handleDone = async () => {
-    const docRef = doc(db, 'tasks', taskInfo.doc)
-    await updateDoc(docRef, {
-      uid,
-      name,
-      description,
-      priority: Number(priority),
-      done: true,
-    })
-    setName('')
-    setDescription('')
-    setPriority('')
-    setTaskInfo()
-  }
-
-  const optionsEdit = (
-    <div style={{display:'flex'}}>
-      <Btn type='button' onClick={handleDel}>
-        Trash <FaTrash />
-      </Btn>
-      <Btn type='button' onClick={handleDone}>
-        Done <AiOutlineFileDone />
-      </Btn>
-    </div>
-  )
 
   return (
     <Forms>
@@ -132,7 +97,6 @@ export default function Form() {
         <Btn type='button' onClick={handleSave}>
           Save {taskInfo ? 'Edit' : 'Task'} <BsFillPatchCheckFill />
         </Btn>
-        {taskInfo && optionsEdit}
         </ContainerBtns>
     </Forms>
   )
