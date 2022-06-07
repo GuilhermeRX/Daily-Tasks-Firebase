@@ -6,7 +6,6 @@ import useReview from '../hooks/useReview';
 import { GridOne, GridTwo, ReviewContainer } from '../Style/Components/Review';
 
 export default function Review() {
-  const [tasks, setTasks] = useState([]);
   const [done, setDone] = useState(0);
   const [inProgress, setInProgress] = useState(0);
   const [onGoing, setOnGoing] = useState(0);
