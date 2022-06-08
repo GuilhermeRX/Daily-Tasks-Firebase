@@ -15,6 +15,7 @@ export const Btn = styled.button`
   font-weight: 600;
   outline: none;
   align-self: center;
+  cursor: pointer;
   :active {
     padding: 4px 14px;
   }
