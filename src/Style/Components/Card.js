@@ -57,6 +57,10 @@ export const InfoDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    p {
+      margin-right: 4px;
+    }
   }
 `;
 
@@ -67,6 +71,7 @@ export const StartTask = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  
   svg {
     font-size: 22px;
     color: ${colors.main};
@@ -80,10 +85,10 @@ export const Done = styled.span`
   justify-content: center;
   position: absolute;
   margin-top: -28px;
-  p {
-  font-size: 12px;
-  color: ${colors.paragraph};
-  letter-spacing: 0.5px;
-  }
   
+  p {
+    font-size: 12px;
+    color: ${colors.paragraph};
+    letter-spacing: 0.5px;
+  }
 `;
