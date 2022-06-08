@@ -16,23 +16,22 @@ export default function Home() {
     const auth = getAuth(app)
     
     const getUser = async () => {
-
-    onAuthStateChanged(auth, (userAuth) => {
-      if(userAuth) {
-        const {email, displayName, photoURL, uid } = userAuth
-        const userInfo = {
-          firstName: displayName.split(' ')[0],
-          email,
-          photoURL,
-          uid,
+      onAuthStateChanged(auth, (userAuth) => {
+        if(userAuth) {
+          const {email, displayName, photoURL, uid } = userAuth
+          const userInfo = {
+            firstName: displayName.split(' ')[0],
+            email,
+            photoURL,
+            uid,
+          }
+          handleUser(userInfo)
+        } else {
+          console.log('Unauthorized User!')
+          navigate('/')
         }
-        handleUser(userInfo)
-      } else {
-        console.log('Unauthorized User!')
-        navigate('/')
-      }
-    })
-  }
+      })
+    }
   getUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
