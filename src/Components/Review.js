@@ -20,7 +20,6 @@ export default function Review() {
    setOnGoing(docOnGoing)
    setInProgress(docInProgress)
    setDone(docLength)
-   console.log(docReview)
    setReview(docReview)
  }, [docLength, docInProgress, docOnGoing, docReview])
    

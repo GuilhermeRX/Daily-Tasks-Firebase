@@ -75,7 +75,6 @@ export default function Card() {
   }
 
   const doneTime = (task) => {
-    console.log(task.duration)
     const render = (
       <Done>
         <p>{`Done in: ${task.duration}`}</p>
