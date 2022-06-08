@@ -1,6 +1,8 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Card from '../Components/Card'
 import Footer from '../Components/Footer'
 import Form from '../Components/Form'
@@ -37,9 +39,10 @@ export default function Tasks() {
   getUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  
   return (
     <PageTask>
+      <ToastContainer />
       <Main>
         <h4>{taskInfo ? 'Edit Your Task ' : 'Add New Task'}</h4>
         <Form />

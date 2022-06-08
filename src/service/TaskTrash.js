@@ -1,7 +1,10 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "./firebase";
+import { notifyTrash } from "./Notify";
 
-export default async function TaskTrash(id) {
-  deleteDoc(doc(db, 'tasks', id))
-  .then(() => console.log('Task Removed'))
+export default async function TaskTrash(task) {
+  deleteDoc(doc(db, 'tasks', task.id))
+  .then(() => {
+    notifyTrash(task)
+  })
 }

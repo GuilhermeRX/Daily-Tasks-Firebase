@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import AppContext from '../context/AppContext';
 import { db } from '../service/firebase';
+import { notifySuccess } from "../service/Notify";
 import { Btn } from '../Style/Components/Btn';
 import { ContainerBtns } from "../Style/Components/EditBtns";
 import { Forms } from '../Style/Components/Forms';
@@ -24,10 +25,11 @@ export default function Form() {
       duration: null,
       status: 'ongoing',
     }
+    
     if (!taskInfo){
       try {
-        const docRef = await addDoc(collection(db, "tasks"), newTask)
-        console.log("Document written with ID: ", docRef.id);
+        await addDoc(collection(db, "tasks"), newTask)
+        notifySuccess();
       } catch (e) {
         console.error("Error adding document: ", e);
       }

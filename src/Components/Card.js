@@ -63,11 +63,11 @@ export default function Card() {
   const renderCardStatusIcon = (task) => {
     switch (task.status) {
       case 'ongoing': 
-        return <AiFillPlayCircle onClick={() => PlayTask(task.id)}/>;
+        return <AiFillPlayCircle onClick={() => PlayTask(task)}/>;
       case 'in progress': 
-        return <AiOutlineFileSearch onClick={() => ReviewTask(task.id)}/>;
+        return <AiOutlineFileSearch onClick={() => ReviewTask(task)}/>;
       case 'review':
-        return <AiFillCheckCircle onClick={() => DoneTask(task.id)}/>;
+        return <AiFillCheckCircle onClick={() => DoneTask(task)}/>;
       default: return null;
     }
   }
@@ -104,7 +104,7 @@ export default function Card() {
           </InfoDiv>
           <StartTask >
             {renderCardStatusIcon(task)}
-            <AiFillCloseCircle onClick={() => TaskTrash(task.id)}/>
+            <AiFillCloseCircle onClick={() => TaskTrash(task)}/>
             <MdEditNote onClick={() => handleEdit(task.id)}/>
           </StartTask>
         </TaskCard>
