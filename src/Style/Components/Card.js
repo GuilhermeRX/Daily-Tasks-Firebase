@@ -45,6 +45,7 @@ export const InfoDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 16px;
+
   div {
     width: 50%;
     display: flex;
@@ -77,6 +78,8 @@ export const Done = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  margin-top: -28px;
   p {
   font-size: 12px;
   color: ${colors.paragraph};

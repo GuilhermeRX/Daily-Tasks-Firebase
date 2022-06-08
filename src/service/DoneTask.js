@@ -1,12 +1,24 @@
-import { doc, updateDoc } from "firebase/firestore"
-import { db } from "./firebase"
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
 const DoneTask = async (id) => {
   const docRef = doc(db, 'tasks', id)
-  await updateDoc(docRef, {
-    status: 'done',
-    doneDate: Date.now(),
-  })
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const result = docSnap.data()
+    const inicio = new Date(result.dateStart)
+    const fim =  new Date()
+    const diferenca = fim.getTime() - inicio.getTime()
+    const dateResult = new Date(diferenca)
+    const duration = `${dateResult.getUTCHours()}H${dateResult.getUTCMinutes()}m${dateResult.getUTCSeconds()}s`;
+    
+    await updateDoc(docRef, {
+      status: 'done',
+      doneDate: Date.now(),
+      duration,
+    })
+  }
 }
 
 export default DoneTask;
