@@ -9,6 +9,7 @@ export const TaskContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 120px;
+  user-select: none;
 `;
 
 export const TaskCard = styled.div`

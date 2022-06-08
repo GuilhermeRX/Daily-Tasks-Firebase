@@ -17,4 +17,5 @@ export const BtnSelect = styled.button`
   border: none;
   margin: 0px 4px;
   cursor: pointer;
+  user-select: none;
 `;
