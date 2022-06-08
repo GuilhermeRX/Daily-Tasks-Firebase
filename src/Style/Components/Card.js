@@ -76,6 +76,7 @@ export const StartTask = styled.span`
     font-size: 22px;
     color: ${colors.main};
     margin: 2px;
+    cursor: pointer;
   }
 `;
 
