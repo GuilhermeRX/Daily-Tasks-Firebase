@@ -13,18 +13,16 @@ import { Done, InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Comp
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
-  const {user, setTaskInfo, select, setData} = useContext(AppContext)
+  const {user, setTaskInfo, select} = useContext(AppContext)
 
   useEffect(() => {
     if (user.uid) {
-      console.log('USER AUTH - TABLE REQUISITIONS OK !')
     const collectionRef = collection(db, 'tasks');
     const searchQuery =  query(
       collectionRef,
       where('uid', '==', user.uid),
       orderBy('priority', 'asc'),
       orderBy('name', 'asc'));
-      console.log(select)
     onSnapshot(searchQuery, (querySnapshot) => {
       const array = []
   
