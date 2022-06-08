@@ -61,7 +61,19 @@ export const notifyDone = (task) => {
 };
 
 export const notifyEdit = () => {
-  toast.info('Changes Saved Successfully!', {
+  toast.success('Changes Saved Successfull!', {
+    position:"top-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+};
+
+export const notifyRedirect = () => {
+  toast.success('You are being redirected!', {
     position:"top-right",
     autoClose: 2000,
     hideProgressBar: false,
