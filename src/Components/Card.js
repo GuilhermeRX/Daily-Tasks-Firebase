@@ -100,13 +100,13 @@ export default function Card() {
               </span>
               {task.duration !== null && doneTime(task)}
             </div>
+
+          </InfoDiv>
           <StartTask >
             {renderCardStatusIcon(task)}
             <AiFillCloseCircle onClick={() => TaskTrash(task.id)}/>
             <MdEditNote onClick={() => handleEdit(task.id)}/>
           </StartTask>
-
-          </InfoDiv>
         </TaskCard>
       ))}
     </TaskContainer>

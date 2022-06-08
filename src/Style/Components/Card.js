@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors } from '../global';
 
 export const TaskContainer = styled.div`
-  width: 65%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -49,15 +49,14 @@ export const InfoDiv = styled.div`
   div {
     width: 50%;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    align-items: flex-end;
+    justify-content: space-between;
     flex-direction: column;
   }
   span {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-
+    justify-content: center;
     p {
       margin-right: 4px;
     }
@@ -66,8 +65,7 @@ export const InfoDiv = styled.div`
 
 export const StartTask = styled.span`
   position: absolute;
-  right: 20%;
-  margin-top: -108px;
+  right: 12%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,8 +83,7 @@ export const Done = styled.span`
   align-items: center;
   justify-content: center;
   position: absolute;
-  margin-top: -28px;
-  
+  margin-top: -16px;
   p {
     font-size: 12px;
     color: ${colors.paragraph};
