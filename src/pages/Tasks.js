@@ -16,8 +16,6 @@ export default function Tasks() {
 
   useEffect(() => {
     const auth = getAuth(app);
-    const user = auth.currentUser;
-    console.log(user)
 
     const getUser = async () => {
       onAuthStateChanged(auth, (userAuth) => {
