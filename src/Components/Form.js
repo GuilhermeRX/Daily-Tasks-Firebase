@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import AppContext from '../context/AppContext';
 import { db } from '../service/firebase';
-import { notifySuccess } from "../service/Notify";
+import { notifyEdit, notifySuccess } from "../service/Notify";
 import { Btn } from '../Style/Components/Btn';
 import { ContainerBtns } from "../Style/Components/EditBtns";
 import { Forms } from '../Style/Components/Forms';
@@ -45,6 +45,7 @@ export default function Form() {
         description,
         priority: Number(priority),
       })
+      notifyEdit()
       setName('')
       setDescription('')
       setPriority('')
