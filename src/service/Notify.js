@@ -47,3 +47,15 @@ export const notifyReview = (task) => {
     progress: undefined,
     });
 };
+
+export const notifyDone = (task) => {
+  toast.info(`${task.name} moved to Done! 🚀`, {
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+};

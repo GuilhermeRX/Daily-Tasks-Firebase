@@ -1,8 +1,9 @@
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { notifyDone } from "./Notify";
 
-const DoneTask = async (id) => {
-  const docRef = doc(db, 'tasks', id)
+const DoneTask = async (task) => {
+  const docRef = doc(db, 'tasks', task.id)
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
@@ -18,6 +19,7 @@ const DoneTask = async (id) => {
       doneDate: Date.now(),
       duration,
     })
+    notifyDone(task)
   }
 }
 
