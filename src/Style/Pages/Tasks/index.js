@@ -4,7 +4,7 @@ export const PageTask = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   min-height: 100vh;
   background: rgb(255,255,255);

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Card from '../Components/Card'
 import Footer from '../Components/Footer'
 import Form from '../Components/Form'
+import Select from '../Components/Select'
 import AppContext from '../context/AppContext'
 import { Main } from '../Style/Components/Main'
 import { PageTask } from '../Style/Pages/Tasks'
@@ -14,6 +15,7 @@ export default function Tasks() {
         <h4>{taskInfo ? 'Edit Your Task ' : 'Add New Task'}</h4>
         <Form />
       </Main>
+      <Select />
       <Card />
       <Footer />
     </PageTask>

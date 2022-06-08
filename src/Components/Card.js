@@ -13,7 +13,7 @@ import { Done, InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Comp
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
-  const {user, setTaskInfo} = useContext(AppContext)
+  const {user, setTaskInfo, select, setData} = useContext(AppContext)
 
   useEffect(() => {
     if (user.uid) {
@@ -24,7 +24,7 @@ export default function Card() {
       where('uid', '==', user.uid),
       orderBy('priority', 'asc'),
       orderBy('name', 'asc'));
-    
+      console.log(select)
     onSnapshot(searchQuery, (querySnapshot) => {
       const array = []
   
@@ -44,7 +44,7 @@ export default function Card() {
     })
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [select, user])
 
   const handleEdit = async (id) => {
     const docRef = doc(db, 'tasks', id)
@@ -85,7 +85,7 @@ export default function Card() {
   
   return (
     <TaskContainer>
-      {tasks.map((task, index) => (
+      {tasks.filter((item) => item.status === select).map((task, index) => (
         <TaskCard
         key={index}
         >

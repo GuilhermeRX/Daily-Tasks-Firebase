@@ -4,6 +4,7 @@ import AppContext from './AppContext';
 export default function AppProvider({children}) {
   const [user, setUser] = useState({});
   const [taskInfo, setTaskInfo] = useState();
+  const [select, setSelect] = useState('ongoing')
 
   const handleUser = (info) => setUser(info);
 
@@ -12,6 +13,8 @@ export default function AppProvider({children}) {
     handleUser,
     taskInfo,
     setTaskInfo,
+    select,
+    setSelect,
   }
 
   return (
