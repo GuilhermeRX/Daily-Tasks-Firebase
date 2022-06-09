@@ -40,7 +40,7 @@ export default function Review() {
       <GridTwo>
       <div>
           <h1>{onGoing}</h1>
-          <p>Ongoing</p>
+          <p>To Do</p>
         </div>
         
         <div>

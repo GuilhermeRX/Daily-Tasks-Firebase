@@ -1,11 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { MdWavingHand } from "react-icons/md";
 import AppContext from '../context/AppContext';
+import useDone from '../hooks/useDone';
+import useInProgress from '../hooks/useInProgress';
+import useOnGoing from '../hooks/useOnGoing';
+import useReview from '../hooks/useReview';
 import { Container } from '../Style/Components/Header';
 import { DivUser } from '../Style/Components/UserInfo';
 
 export default function Header() {
   const {user} = useContext(AppContext)
+  const [pending, setPending] = useState(0);
+
+  const docLength = useDone();
+  const docInProgress = useInProgress();
+  const docOnGoing = useOnGoing();
+  const docReview = useReview();
+
+  useEffect(() => {
+    setPending(docOnGoing + docInProgress + docReview)
+  }, [docLength, docInProgress, docOnGoing, docReview])
+
   return (
     <Container>
       <DivUser>
@@ -13,7 +28,7 @@ export default function Header() {
       </DivUser>
     
         <h1>Hi, {user.firstName} <MdWavingHand /></h1>
-        <p>6 Tasks are pending</p>
+        <p>{`${pending} Tasks are pending`} </p>
     </Container>
   )
 }
