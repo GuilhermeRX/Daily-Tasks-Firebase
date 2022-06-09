@@ -5,7 +5,7 @@ export const ReviewContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 18px;
-  height: 280px;
+  height: 320px;
   width: 100%;
   padding: 24px;
   margin: auto;

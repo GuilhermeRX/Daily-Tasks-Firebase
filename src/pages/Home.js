@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <DivHome>
       <Header />
-      <Title>Monthly Review</Title>
+      <Title>Task Statistics</Title>
       <Review />
       <Footer />
     </DivHome>
