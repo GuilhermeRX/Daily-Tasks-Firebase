@@ -28,7 +28,7 @@ export default function Login() {
         notifyRedirect()
         setTimeout(() => {
           navigate('/home')
-        }, 3000)
+        }, 2000)
       }
     
   }
