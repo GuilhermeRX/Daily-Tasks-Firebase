@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from "react-icons/fc";
-import { GiNotebook } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppContext from '../context/AppContext';
-import todolist from '../images/todolist.svg';
 import { loginWithSocialMedia } from '../service/firebase';
 import { notifyRedirect } from '../service/Notify';
 import LoginBtn from '../Style/Components/LoginBtn';
-import { Container } from '../Style/Pages/login';
+import { Container, PageLogin } from '../Style/Pages/login';
 export default function Login() {
   const {handleUser} = useContext(AppContext)
   const navigate = useNavigate()
@@ -35,19 +33,20 @@ export default function Login() {
     
   }
   return (
-    <>
+    <PageLogin>
       <Container>
-      <img src={todolist} alt='todolist'/>
-      <div>
-        <span>Daily Tasks <GiNotebook /></span>
-        <h1>Welcome!</h1>
-        <LoginBtn onClick={handleGoogleLoginClick}>
-          <FcGoogle />Login with Google
-        </LoginBtn>
-      </div>
+        <div>
+          <h1>Manager your daily tasks</h1>
+          <p>
+            Simple and intuitive application to manage your tasks quickly and easily.
+          </p>
+          <LoginBtn onClick={handleGoogleLoginClick}>
+            <FcGoogle />Login with Google
+          </LoginBtn>
+        </div>
       </Container>
       <ToastContainer />
-    </>
+    </PageLogin>
     
   )
 }
