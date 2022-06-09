@@ -56,7 +56,7 @@ export default function Card() {
       case 2: return <FcMediumPriority />;
       case 3: return <FcLowPriority />;
       default:
-        console.log('Sorry, choice one priority');
+        return undefined;
     }
   }
 
