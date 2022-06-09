@@ -8,12 +8,15 @@ export default function Profile() {
   const auth = getAuth();
   const user = auth.currentUser;
   const {displayName, email, photoURL, } = user
+  const nameOne = displayName.split(' ')[0]
+  const nameTwo = displayName.split(' ')[1]
+  const name = `${nameOne} ${nameTwo}`;
   return (
     <MyProfContainer>
       <MyProfile>
         <h1>My Profile</h1>
         <img src={photoURL} alt='UserName'/>
-        <p>{displayName}</p>
+        <p>{name}</p>
         <p>{email}</p>
       </MyProfile>
       <Footer />

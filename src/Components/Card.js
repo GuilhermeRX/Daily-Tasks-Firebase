@@ -13,7 +13,12 @@ import { Done, InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Comp
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
-  const {user, setTaskInfo, select, setSelect} = useContext(AppContext)
+  const {
+    user,
+    setTaskInfo,
+    select,
+    setSelect,
+  } = useContext(AppContext)
 
   useEffect(() => {
     if (user.uid) {
