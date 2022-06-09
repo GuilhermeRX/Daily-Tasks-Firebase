@@ -10,6 +10,7 @@ export const ReviewContainer = styled.div`
   padding: 24px;
   margin: auto;
   margin-top: 16px;
+  margin-bottom: 80px;
 `;
 
 export const GridOne = styled.div`

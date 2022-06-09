@@ -7,7 +7,7 @@ export const Container = styled.header`
   padding: 24px;
   display: flex;
   align-items: flex-start;
-  height: 300px;
+  height: 250px;
   flex-direction: column;
   overflow: hidden;
 

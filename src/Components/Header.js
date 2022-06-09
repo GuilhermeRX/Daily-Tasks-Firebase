@@ -12,7 +12,7 @@ export default function Header() {
         <img src={user.photoURL} alt={user.firstName}/>
       </DivUser>
     
-        <h1>Hi {user.firstName} <MdWavingHand /></h1>
+        <h1>Hi, {user.firstName} <MdWavingHand /></h1>
         <p>6 Tasks are pending</p>
     </Container>
   )
