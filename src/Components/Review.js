@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
+import AppContext from '../context/AppContext';
 import useDone from '../hooks/useDone';
 import useInProgress from '../hooks/useInProgress';
 import useOnGoing from '../hooks/useOnGoing';
@@ -6,10 +7,16 @@ import useReview from '../hooks/useReview';
 import { GridOne, GridTwo, ReviewContainer } from '../Style/Components/Review';
 
 export default function Review() {
-  const [done, setDone] = useState(0);
-  const [inProgress, setInProgress] = useState(0);
-  const [onGoing, setOnGoing] = useState(0);
-  const [review, setReview] = useState(0);
+  const {
+    done,
+    setDone,
+    inProgress,
+    setInProgress,
+    review,
+    setReview,
+    onGoing,
+    setOnGoing
+  } = useContext(AppContext)
 
  const docLength = useDone();
  const docInProgress = useInProgress();
@@ -21,6 +28,7 @@ export default function Review() {
    setInProgress(docInProgress)
    setDone(docLength)
    setReview(docReview)
+ // eslint-disable-next-line react-hooks/exhaustive-deps
  }, [docLength, docInProgress, docOnGoing, docReview])
    
   return (
