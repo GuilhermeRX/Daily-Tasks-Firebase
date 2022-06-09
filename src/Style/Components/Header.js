@@ -39,12 +39,3 @@ export const Container = styled.header`
     color: ${colors.headline}
   }
 `
-
-export const DivSvg = styled.div`
-  position: fixed;
-  right: -26px;
-  top: 30px;
-  img {
-    width: 200px;
-  }
-`;
