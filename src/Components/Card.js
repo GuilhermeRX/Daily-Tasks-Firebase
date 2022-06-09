@@ -13,7 +13,7 @@ import { Done, InfoDiv, StartTask, TaskCard, TaskContainer } from "../Style/Comp
 
 export default function Card() {
   const [tasks, setTasks] = useState([])
-  const {user, setTaskInfo, select} = useContext(AppContext)
+  const {user, setTaskInfo, select, setSelect} = useContext(AppContext)
 
   useEffect(() => {
     if (user.uid) {
@@ -63,11 +63,11 @@ export default function Card() {
   const renderCardStatusIcon = (task) => {
     switch (task.status) {
       case 'ongoing': 
-        return <AiFillPlayCircle onClick={() => PlayTask(task)}/>;
+        return <AiFillPlayCircle onClick={() => PlayTask(task, setSelect)}/>;
       case 'in progress': 
-        return <AiOutlineFileSearch onClick={() => ReviewTask(task)}/>;
+        return <AiOutlineFileSearch onClick={() => ReviewTask(task, setSelect)}/>;
       case 'review':
-        return <AiFillCheckCircle onClick={() => DoneTask(task)}/>;
+        return <AiFillCheckCircle onClick={() => DoneTask(task, setSelect)}/>;
       default: return null;
     }
   }

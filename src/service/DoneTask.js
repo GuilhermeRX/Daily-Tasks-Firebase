@@ -2,7 +2,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { notifyDone } from "./Notify";
 
-const DoneTask = async (task) => {
+const DoneTask = async (task, setSelect) => {
   const docRef = doc(db, 'tasks', task.id)
   const docSnap = await getDoc(docRef);
 
@@ -20,6 +20,7 @@ const DoneTask = async (task) => {
       duration,
     })
     notifyDone(task)
+    setSelect('done')
   }
 }
 
