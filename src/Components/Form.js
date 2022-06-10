@@ -15,7 +15,18 @@ export default function Form() {
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
 
+  const verifyInputs = () => {
+    const validName = name.length > 0;
+    const validDescription = description.length > 0;
+    const validPriority = priority > 0 && priority <= 3;
+
+    if(validName && validDescription && validPriority) {
+      handleSave()
+    }
+  }
+
   const handleSave = async () => {
+    console.log('oi')
     const newTask = {
       uid,
       name,
@@ -87,14 +98,14 @@ export default function Form() {
       <label htmlFor="priority"> Priority
         <Input 
         type='number'
-        placeholder='Priority' 
+        placeholder='Enter a value from 1 to 3' 
         value={priority}
         id='priority'
         onChange={({target}) => setPriority(target.value)}
         />
       </label>
         <ContainerBtns>
-        <Btn type='button' onClick={handleSave}>
+        <Btn type='button' onClick={verifyInputs}>
           Save {taskInfo ? 'Edit' : 'Task'} <BsFillPatchCheckFill />
         </Btn>
         </ContainerBtns>
