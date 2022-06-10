@@ -26,7 +26,6 @@ export default function Form() {
   }
 
   const handleSave = async () => {
-    console.log('oi')
     const newTask = {
       uid,
       name,
